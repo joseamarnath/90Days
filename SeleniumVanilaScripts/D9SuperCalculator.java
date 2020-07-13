@@ -79,7 +79,7 @@ public class D9SuperCalculator {
 		operatorDD.selectByVisibleText("*");
 		
 		cdriver.findElementByXPath("//input[@ng-model='second']").sendKeys("4",Keys.TAB);
-		cdriver.findElementByXPath("//button[@class='btn']").click();
+		
 
 		WebElement output = cdriver.findElementByXPath("//h2[@class='ng-binding']");
 		//WebDriverWait wait = new WebDriverWait(cdriver, 30);
