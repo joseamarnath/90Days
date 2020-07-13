@@ -2,7 +2,9 @@ package SeleniumVanilaScripts;
 
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import com.paulhammant.ngwebdriver.ByAngular;
 import com.paulhammant.ngwebdriver.NgWebDriver;
 
@@ -62,7 +64,7 @@ public class D9SuperCalculator {
 		//wait.until(ExpectedConditions.textToBePresentInElement(output, "20"));
 	
 				
-		//With help of ngDriver variable we can handle angular specific waiting issues.  
+		//With help of ngWebDriver variable we can handle angular specific waiting issues.  
 		//The below code will wait for angular requests to finish.
 		ngWeb.waitForAngularRequestsToFinish();
 				
