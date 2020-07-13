@@ -56,6 +56,7 @@ public class D9SuperCalculator {
 			6. Wait for the output to load and print the results
 			Condition:
 			* Should not use Thread.sleep
+			Hint: Refer https://blog.vsoftconsulting.com/blog/testing-angular-applications-using-selenium
 		*/  
 		
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
@@ -70,26 +71,33 @@ public class D9SuperCalculator {
 		cdriver.manage().window().maximize();
 		cdriver.get("https://juliemr.github.io/protractor-demo/");
 		
-		cdriver.findElementByXPath("//input[@ng-model='first']").sendKeys("5",Keys.TAB);
-		cdriver.findElementByXPath("//button[@class='btn']").click();
+		//first input using ByAngluar
+		cdriver.findElement(ByAngular.model("first")).sendKeys("5");
 		
-		WebElement operat = cdriver.findElementByXPath("//select[@ng-model='operator']");
+		//operator selection using ByAngular
+		WebElement operat = cdriver.findElement(ByAngular.model("operator"));
 		operat.click();
 		Select operatorDD = new Select(operat);
 		operatorDD.selectByVisibleText("*");
 		
-		cdriver.findElementByXPath("//input[@ng-model='second']").sendKeys("4",Keys.TAB);
+		//second input using ByAngluar
+		cdriver.findElement(ByAngular.model("second")).sendKeys("5");
 		
+		//clicking button using ByAngluar
+		cdriver.findElement(ByAngular.buttonText("Go!")).click();
 
 		WebElement output = cdriver.findElementByXPath("//h2[@class='ng-binding']");
 		//WebDriverWait wait = new WebDriverWait(cdriver, 30);
 		//wait.until(ExpectedConditions.textToBePresentInElement(output, "20"));
-		
-		
+	
+				
 		//With help of ngDriver variable we can handle angular specific waiting issues.  
 		//The below code will wait for angular requests to finish.
 		ngWeb.waitForAngularRequestsToFinish();
+				
+		//printing the output
 		System.out.println(output.getText());
+		
 		
 		
 		
